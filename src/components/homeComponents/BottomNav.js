@@ -11,7 +11,8 @@ const styles = {
     position: 'sticky',
     bottom: 0,
     backgroundColor: '#fff',
-    height: '50px'
+    height: '50px',
+    position:"-webkit-sticky"
   },
   button: {
     backgroundColor: 'transparent',

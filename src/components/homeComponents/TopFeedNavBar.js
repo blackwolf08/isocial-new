@@ -24,6 +24,7 @@ const styles ={
         justifyContent: 'space-between',
         alignItems: 'center',
         position: 'sticky',
+        position:"-webkit-sticky",
         top: 0,
         backgroundColor: '#fff',
         height: '50px',
