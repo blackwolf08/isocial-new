@@ -92,7 +92,7 @@ class FeedCard extends Component {
             style={{backgroundPosition:'center center', backgroundSize:'cover', backgroundRepeat:'no-repeat', height:'300px',position:'relative'}}
           />
           {this.state.show &&(
-            <div className="animated heartBeat" style={{position: 'absolute', top:'90px',left:'120px', zIndex:'99999', fontSize:'400%', color:'#eee'}}>
+            <div className="animated heartBeat" style={{color:'#eee',position:'absolute', height:'100%',width:'100%', top:0,left:0, display:'flex', alignItems:'center', justifyContent:'center', fontSize:'200%'}}>
               <i style={{fontSize: '200%', color: '#eee'}} className="animated heartBeat fas fa-heart"></i>
             </div>
           )}
