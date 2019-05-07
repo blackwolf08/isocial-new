@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Sofia');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root{
+  height: 100%;
+  width: 100%;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #A9A9A9;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  font-family: 'Sofia', cursive;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0 #f2f2f2; 
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f2f2f2; 
+  border-radius: 0;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f2f2f2; 
+}
+
+i {
+  font-size: 150%;
+}
+
+button {
+  outline: none !important;
+}
