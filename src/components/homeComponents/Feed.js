@@ -9,23 +9,13 @@ import Spinner from '../../images/index'
 
 class Feed extends Component {
 
-    state = {
-        isLoading: false
-    }
+
     componentWillMount(){
         this.props.fetchPhotos();
         this.props.fetchPosts();
         this.props.fetchUsers();
-        
     }
 
-    componentDidMount(){
-        window.addEventListener('load',()=>{
-            this.setState({
-                isLoading: false
-            })
-        })
-    }
 
   render() {
 
@@ -46,12 +36,13 @@ class Feed extends Component {
         )
     })
 
-    if(this.state.isLoading)
+    if(this.props.isLoading)
     {
         return <Spinner />
     }
     
     return (
+        
       <div style={styles.root}>
 
         <TopFeedNavBar />
@@ -85,7 +76,8 @@ const styles = {
 const mapStateToProps = state =>({
     posts: state.fetch.posts,
     photos: state.fetch.photos,
-    users: state.fetch.users
+    users: state.fetch.users,
+    isLoading: state.fetch.isLoading
 })
 
 export default connect(mapStateToProps, { fetchPhotos, fetchPosts, fetchUsers })(Feed);

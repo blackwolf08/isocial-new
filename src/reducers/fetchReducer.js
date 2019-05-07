@@ -1,9 +1,10 @@
-import { FETCH_PHOTOS, FETCH_USERS, FETCH_POSTS } from '../actions/types'
+import { FETCH_PHOTOS, FETCH_USERS, FETCH_POSTS, LOADING } from '../actions/types'
 
 const initialState ={
     posts: [],
     users: [],
-    photos: []
+    photos: [],
+    isLoading: true
 }
 
 export default  function(state = initialState, action) {
@@ -23,6 +24,11 @@ export default  function(state = initialState, action) {
         return {
             ...state,
             posts: action.payload,
+        }
+        case LOADING:
+        return {
+            ...state,
+            isLoading: action.payload
         }
         default:
         return state;

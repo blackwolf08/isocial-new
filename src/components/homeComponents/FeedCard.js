@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import { Avatar } from '@material-ui/core';
+import spinner from '../../images/puff.svg'
 
 const styles = {
   card: {
@@ -26,7 +27,9 @@ class FeedCard extends Component {
       isClicked: false,
       likeClass: "far fa-heart",
       color: 'black',
-      show: false
+      show: false,
+      displayImg : 'none',
+      displaySpinner: 'block'
     }
 
 
@@ -52,6 +55,14 @@ class FeedCard extends Component {
           color: 'black'
         })
       }
+    }
+
+    handleLoad = ()=>{
+      this.setState({
+        loaded: true,
+        displayImg: 'block',
+        displaySpinner: 'none'
+      })
     }
 
     likedDbl = ()=>{
@@ -84,12 +95,21 @@ class FeedCard extends Component {
         <CardActionArea disableRipple  onDoubleClick={this.likedDbl}>
           <CardMedia
             component="img"
+            alt="Spinner"
+            height="140"
+            image={spinner}
+            title=""
+            style={{height:'300px',display: this.state.displaySpinner}}
+          />
+          <CardMedia
+            component="img"
             alt={this.props.name}
             className={classes.media}
             height="140"
             image="http://lorempixel.com/600/400"
             title={this.props.title}
-            style={{backgroundPosition:'center center', backgroundSize:'cover', backgroundRepeat:'no-repeat', height:'300px',position:'relative'}}
+            onLoad={this.handleLoad}
+            style={{backgroundPosition:'center center', backgroundSize:'cover', backgroundRepeat:'no-repeat', height:'300px',position:'relative',display:this.state.displayImg}}
           />
           {this.state.show &&(
             <div className="animated heartBeat" style={{color:'#eee',position:'absolute', height:'100%',width:'100%', top:0,left:0, display:'flex', alignItems:'center', justifyContent:'center', fontSize:'200%'}}>
