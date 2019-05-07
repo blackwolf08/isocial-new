@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Sofia');
 
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -43,9 +44,15 @@ a {
 }
 
 .center {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 ::-webkit-scrollbar {
@@ -54,7 +61,8 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 0 #f2f2f2; 
+  -webkit-box-shadow: inset 0 0 0 #f2f2f2;
+          box-shadow: inset 0 0 0 #f2f2f2; 
   border-radius: 0;
 }
 
