@@ -5,16 +5,30 @@ import FeedCard from './FeedCard'
 import { connect } from 'react-redux'
 import { fetchPhotos, fetchPosts, fetchUsers } from '../../actions/fetchPosts'
 import ImageAvatars from './ImageAvatars'
+import Spinner from '../../images/index'
 
 class Feed extends Component {
 
+    state = {
+        isLoading: false
+    }
     componentWillMount(){
         this.props.fetchPhotos();
         this.props.fetchPosts();
         this.props.fetchUsers();
+        
+    }
+
+    componentDidMount(){
+        window.addEventListener('load',()=>{
+            this.setState({
+                isLoading: false
+            })
+        })
     }
 
   render() {
+
 
     let people = this.props.users.map((name)=>{
         return (
@@ -32,8 +46,14 @@ class Feed extends Component {
         )
     })
 
+    if(this.state.isLoading)
+    {
+        return <Spinner />
+    }
+    
     return (
       <div style={styles.root}>
+
         <TopFeedNavBar />
         <div style={styles.avatars}>
             {people}

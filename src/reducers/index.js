@@ -4,5 +4,5 @@ import currentUser from './currentUser'
 
 export default combineReducers({
     currentUser,
-    fetch: fetchReducer
+    fetch: fetchReducer,
 })

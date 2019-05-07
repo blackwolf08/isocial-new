@@ -1,19 +1,28 @@
 import React, { Component } from 'react'
 import BottomLoginBar from './BottomLoginBar'
+import Spinner from '../../images/index'
 
 export default class AuthLogin extends Component {
 
     state ={
         isDisabled : true,
         email: '',
-        password: ''
+        password: '',
+        isLoading: false
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
+        this.setState({
+            isLoading: true
+        })
         const authType = this.props.signUp ? "signup" : "signin";
-        this.props.onAuth(authType, this.state).then(() => {
-        this.props.history.push("/feed");
+        this.props.onAuth(authType, this.state)
+        .then(() => {
+            this.setState({
+                isLoading: false
+            })
+            this.props.history.push("/feed");
         })
         .catch(() => {
         return;
@@ -25,7 +34,7 @@ export default class AuthLogin extends Component {
             [e.target.name]: e.target.value
         })
 
-        if(this.state.email && this.state.password)
+        if(this.state.email.length>1 && this.state.password.length>1)
         {
             this.setState({
                 isDisabled: false
@@ -33,7 +42,13 @@ export default class AuthLogin extends Component {
         }
     }
 
+
   render() {
+
+    if(this.state.isLoading){
+        return <Spinner />
+    }
+
     return (
       <div style={styles.root}>
         <h1 style={{color:'black'}} className="logo" >iSocial</h1>
