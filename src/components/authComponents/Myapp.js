@@ -16,13 +16,13 @@ class Main extends Component {
     return (
       <Switch>
           <Route exact path="/" component={AuthContainer} />
-          <Route exact path="/login" render={props =>(
+          <Route  path="/login" render={props =>(
             <AuthLogin signin onAuth={authUser} {...props}/>
           )} />
-          <Route exact path="/signup" render={props =>(
+          <Route  path="/signup" render={props =>(
             <SignUp signup onAuth={authUser} {...props}/>
           )} />
-          <Route exact path="/feed" component={withAuth(Feed)} />
+          <Route  path="/feed" component={withAuth(Feed)} />
       </Switch>
     )
   }
