@@ -7,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import { Avatar } from '@material-ui/core';
-import spinner from '../../images/puff.svg'
 
 const styles = {
   card: {
@@ -28,8 +27,8 @@ class FeedCard extends Component {
       likeClass: "far fa-heart",
       color: 'black',
       show: false,
-      displayImg : 'none',
-      displaySpinner: 'block'
+      displayImg : 'block',
+      displaySpinner: 'none'
     }
 
 
@@ -57,13 +56,6 @@ class FeedCard extends Component {
       }
     }
 
-    handleLoad = ()=>{
-      this.setState({
-        loaded: true,
-        displayImg: 'block',
-        displaySpinner: 'none'
-      })
-    }
 
     likedDbl = ()=>{
       if(!this.state.isClicked)
@@ -95,20 +87,11 @@ class FeedCard extends Component {
         <CardActionArea disableRipple  onDoubleClick={this.likedDbl}>
           <CardMedia
             component="img"
-            alt="Spinner"
-            height="140"
-            image={spinner}
-            title=""
-            style={{height:'300px',display: this.state.displaySpinner}}
-          />
-          <CardMedia
-            component="img"
             alt={this.props.name}
             className={classes.media}
             height="140"
             image="http://lorempixel.com/600/400"
             title={this.props.title}
-            onLoad={this.handleLoad}
             style={{backgroundPosition:'center center', backgroundSize:'cover', backgroundRepeat:'no-repeat', height:'300px',position:'relative',display:this.state.displayImg}}
           />
           {this.state.show &&(
