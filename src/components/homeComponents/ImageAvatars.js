@@ -8,6 +8,12 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  modal: {
+    zIndex: '10000',
+  },
+  dialog: {
+
   }
 };
 
@@ -23,7 +29,21 @@ function ImageAvatars(props) {
 
   return (
     <div style={styles.root}>
-      <Avatar alt={ name } src="https://picsum.photos/100" className={classes.Avatar} />
+      <div style={styles.modal}>
+        <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div  className="modal-dialog mydialog" role="document">
+            <div className="modal-content">
+                <div className="mymodal">
+                  
+                </div>
+                <button position="absolute" zIndex="999999" type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        </div>
+      </div>
+      <button type="button" style={{outline:'none', backgroundColor:'transparent', border: 'none'}} data-toggle="modal" data-target="#exampleModal"><Avatar alt={ name } src="https://picsum.photos/100" className={classes.Avatar} /></button>
       <p>{ name }</p>
     </div>
   );

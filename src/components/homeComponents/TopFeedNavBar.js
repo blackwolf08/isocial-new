@@ -5,11 +5,11 @@ export default class TopFeedNavBar extends Component {
   render() {
     return (
       <div style={styles.root}>
-        <p><i className="fas fa-camera"></i></p>
+        <p><i style={{fontSize:'120%'}} className="fas fa-camera"></i></p>
         <p className="logo" style={{color: 'black'}}>iSocial</p>
         <p>
-        <i className="fas fa-plus"></i>
-        <i className="fas fa-user"></i>
+        <i style={{fontSize:'120%'}} className="fas fa-plus"></i>
+        <i style={{fontSize:'120%'}} className="fas fa-user"></i>
         </p>
       </div>
     )

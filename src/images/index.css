@@ -9,3 +9,16 @@
 img {
     height: 10%;
 }
+
+.mymodal {
+    background-image: url('http://lorempixel.com/800/400');
+    height: 400px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.mydialog {
+    margin-top: 200px;
+}
