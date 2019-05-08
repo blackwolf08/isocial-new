@@ -40,10 +40,10 @@ class BottomNav extends React.Component {
 
     return (
       <div value={value} onChange={this.handleChange} style={styles.root}>
-        <button style={styles.button} onClick={this.logout}><i style={{color: 'black'}} className="fas fa-home"></i></button>
-        <button style={styles.button} onClick={this.logout}><i className="fas fa-search"></i></button>
-        <button style={styles.button} onClick={this.logout}><i className="far fa-plus-square"></i></button>
-        <button style={styles.button} onClick={this.logout}><i className="far fa-heart"></i></button>
+        <button style={styles.button} ><i style={{color: 'black'}} className="fas fa-home"></i></button>
+        <button style={styles.button} ><i className="fas fa-search"></i></button>
+        <button style={styles.button}><i className="far fa-plus-square"></i></button>
+        <button style={styles.button}><i className="far fa-heart"></i></button>
         <button style={styles.button} onClick={this.logout}><i className="far fa-user"></i></button>
       </div>
     );
