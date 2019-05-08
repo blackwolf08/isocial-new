@@ -6,7 +6,7 @@ export default class AuthContainer extends Component {
   render() {
     return (
       <div style={styles.root}>
-        <h1 style={{color:'black'}} className="logo" >iSocial</h1>
+        <h1 style={{color:'black'}} className="logo" ><Link style={{color: "black"}} to="/">iSocial</Link></h1>
         <p style={{textAlign:'center',marginTop: '20px'}}>Sign up to see photos and videos of friends</p>
         <Link style={styles.button} className="btn btn-primary" to="/login">Login</Link>
         <div style={styles.or}>
@@ -14,7 +14,6 @@ export default class AuthContainer extends Component {
             <span style={styles.orText}>OR</span>
             <hr style={styles.hr} />
         </div>
-        <Link style={styles.link} to="/feed">Sign In! No info required (BETA)</Link>
         <Link style={styles.link} to="/signup">Sign up with email or phone number</Link>
         <BottomLoginBar />
       </div>

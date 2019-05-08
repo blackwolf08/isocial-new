@@ -1,9 +1,10 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import SwipeableViews from 'react-swipeable-views';
+import Spinner from '../../images/index'
+import { connect } from 'react-redux'
 
 function TabContainer({ children, dir }) {
     return (
@@ -15,11 +16,11 @@ function TabContainer({ children, dir }) {
 
 const styles = theme => ({
   root: {
-    width: '80%',
+    width: '100%',
     backgroundColor: theme.palette.background.paper,
   },
   tabsRoot: {
-    borderBottom: '1px solid #e8e8e8',
+    borderBottom: '1px solid #000',
   },
   tabsIndicator: {
     backgroundColor: '#000',
@@ -53,7 +54,9 @@ const styles = theme => ({
       color: '#000',
     },
   },
-  tabSelected: {},
+  tabSelected: {
+    color: '#000'
+  },
   typography: {
     padding: theme.spacing.unit * 3,
   },
@@ -62,7 +65,11 @@ const styles = theme => ({
 class TabSignUp extends React.Component {
   state = {
     value: 0,
-    direction: 'ltr'
+    direction: 'ltr',
+    username: '',
+    email: '',
+    password: '',
+    isLoading: false
   };
 
   handleChange = (event, value) => {
@@ -73,26 +80,63 @@ class TabSignUp extends React.Component {
     this.setState({ value: index });
   };
 
+  handleSubmit = (e)=> {
+    e.preventDefault();
+    this.setState({
+      isLoading: true
+    })
+    const {username, password, email} = this.state
+    const authType = this.props.signup ? "signup" : "signin";
+    this.props.onAuth(authType, {username, password, email}).then(() => {
+      this.setState({
+        isLoading: false
+      })
+      this.props.history.push("/feed");
+    })
+    .catch((err) => {
+      console.log(err.message)
+      return;
+    });
+
+  }
+  handleInputChange = (e)=>{
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   render() {
-    const { classes } = this.props;
     const { value } = this.state;
 
+    if(this.state.isLoading)
+    {
+      if(this.props.error.length)
+    {
+      this.setState({
+        isLoading: false
+      })
+    }
+      return <Spinner />
+    }
+
+    
+
     return (
-      <div className={classes.root}>
+      <div style={styles.root}>
         <Tabs
           value={value}
           onChange={this.handleChange}
-          classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
+          style={{ root: styles.tabsRoot, indicator: styles.tabsIndicator }}
           variant="fullWidth"
         >
           <Tab
             disableRipple
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
+            style={{ root: styles.tabRoot, selected: styles.tabSelected }}
             label="Phone"
           />
           <Tab
             disableRipple
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
+            style={{ root: styles.tabRoot, selected: styles.tabSelected }}
             label="Email"
           />
         </Tabs>
@@ -106,11 +150,23 @@ class TabSignUp extends React.Component {
             <div className="input-group-prepend">
                 <span className="input-group-text" style={{color: 'blue'}}>+91</span>
             </div>
-            <input type="text" className="form-control" placeholder="Number" style={{backgroundColor: '#fff'}} />
+            <input type="text" className="form-control" placeholder="Number" style={{backgroundColor: '#fff'}} disabled />
             <p style={{marginTop: '20px', textAlign: 'center', color: '#a9a9a9'}}>You may recieve SMS containing your OTP for verification</p>
-            </div>
+          </div>
           </TabContainer>
           <TabContainer dir={this.state.direction}>
+          <form onSubmit={this.handleSubmit}>
+            <div className="mb-3">
+              {this.props.error.length>0 && (
+                <p style={{color:'red', textAlign:'center'}}>{this.props.error}</p>
+              )}
+              <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange} className="form-control mb-3" placeholder="Email" style={{backgroundColor: '#fff'}} />
+              <input type="text" name="username" value={this.state.username} onChange={this.handleInputChange} className="form-control mb-3" placeholder="Username" style={{backgroundColor: '#fff'}} />
+              <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} className="form-control mb-3" placeholder="Password" style={{backgroundColor: '#fff'}} />
+              <p style={{marginTop: '20px', textAlign: 'center', color: '#a9a9a9'}}>You may recieve email for verification</p>
+              <button type="submit" className="btn btn-primary" style={{width: '100%'}}>Next</button>
+            </div>
+          </form>
           </TabContainer>
         </SwipeableViews>
       </div>
@@ -118,5 +174,8 @@ class TabSignUp extends React.Component {
   }
 }
 
+const mapStateToProps = state =>({
+  error: state.error.err
+})
 
-export default withStyles(styles)(TabSignUp);
+export default connect(mapStateToProps)(TabSignUp);

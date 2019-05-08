@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import BottomLoginBar from './BottomLoginBar'
 import Spinner from '../../images/index'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
-export default class AuthLogin extends Component {
+class AuthLogin extends Component {
 
     state ={
         isDisabled : true,
@@ -16,11 +18,16 @@ export default class AuthLogin extends Component {
         this.setState({
             isLoading: true
         })
+        this.setState({
+            email: this.state.email.toLowerCase
+        })
         const authType = this.props.signUp ? "signup" : "signin";
         this.props.onAuth(authType, this.state)
         .then(() => {
             this.setState({
-                isLoading: false
+                isLoading: false,
+                email: '',
+                password: ''
             })
             this.props.history.push("/feed");
         })
@@ -46,12 +53,20 @@ export default class AuthLogin extends Component {
   render() {
 
     if(this.state.isLoading){
+        if(this.props.error.length)
+        {
+        this.setState({
+            isLoading: false,
+            email: '',
+            password: ''
+        })
+        }
         return <Spinner />
     }
 
     return (
       <div style={styles.root}>
-        <h1 style={{color:'black'}} className="logo" >iSocial</h1>
+        <h1 style={{color:'black'}} className="logo" ><Link style={{color: "black"}} to="/">iSocial</Link></h1>
         <button type="button" style={styles.button} className="btn btn-primary"><i className="fab fa-facebook-square"></i> Continue with Facebook</button>
         <div style={styles.or}>
             <hr style={styles.hr} />
@@ -59,6 +74,9 @@ export default class AuthLogin extends Component {
             <hr style={styles.hr} />
         </div>
         <form style={styles.form} onSubmit={this.handleSubmit}>
+            {this.props.error.length>0 && (
+                <p style={{color:'red', textAlign:'center'}}>{this.props.error}</p>
+              )}
             <input value={this.state.email} onChange={this.handleChange} name="email" style={styles.input} type="text" placeholder="Email" />
             <input value={this.state.password} onChange={this.handleChange} name="password" style={styles.input} type="password" placeholder="Password" />
             <button disabled={this.state.isDisabled} type="submit" style={styles.button} className="btn btn-primary">Login</button>
@@ -116,3 +134,9 @@ const styles = {
         borderRadius: '5px'
     }
 }
+
+const mapStateToProps = state =>({
+    error: state.error.err
+  })
+
+export default connect(mapStateToProps)(AuthLogin);

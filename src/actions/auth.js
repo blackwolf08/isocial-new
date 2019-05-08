@@ -1,5 +1,5 @@
 import {apiCall, setTokenHeader} from '../services/api';
-import {SET_CURRENT_USER} from '../actions/types';
+import {SET_CURRENT_USER, ERROR} from '../actions/types';
 
 
 export function setCurrentUser(user){
@@ -31,7 +31,10 @@ export function authUser(type, userData){
         resolve();
       })
       .catch(err => {
-        console.log(err)
+        dispatch({
+          type: ERROR,
+          payload: err.message
+        })
       });
     });
   }
