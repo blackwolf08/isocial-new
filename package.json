@@ -9,6 +9,7 @@
     "image-webpack-loader": "^4.6.0",
     "jwt-decode": "^2.2.0",
     "react": "^16.8.6",
+    "react-detect-offline": "^2.3.0",
     "react-dom": "^16.8.6",
     "react-modal": "^3.8.1",
     "react-redux": "^7.0.3",
