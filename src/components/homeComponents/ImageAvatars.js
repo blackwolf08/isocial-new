@@ -29,7 +29,7 @@ function ImageAvatars(props) {
 
   return (
     <div style={styles.root}>
-      <div className="zindex" style={styles.modal}>
+      <div className="clickable zindex" style={styles.modal}>
         <div className="modal fade zindex" id="exampleModal" tabIndex="-1" role="dialog" ariaLabelledBy="exampleModalLabel" ariaHidden="true">
         <div  className="modal-dialog mydialog zindex" role="document">
             <div className="modal-content zindex">

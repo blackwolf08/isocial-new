@@ -93,7 +93,6 @@ button {
   background-position: center center;
   background-repeat: no-repeat;
   z-index: 100000;
-  position: absolute;
 }
 
 .mydialog {
@@ -102,4 +101,8 @@ button {
 
 .zindex{
   z-index: 10000000000;
+}
+
+.clickable {
+  cursor: pointer;
 }
