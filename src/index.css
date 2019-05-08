@@ -84,3 +84,18 @@ button {
   outline: none !important;
 }
 
+
+.mymodal {
+  background-image: url('http://lorempixel.com/800/400');
+  height: 400px;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 100000;
+}
+
+.mydialog {
+  margin-top: 200px;
+  z-index: 100000;
+}
