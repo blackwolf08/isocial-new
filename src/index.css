@@ -98,3 +98,7 @@ button {
 .mydialog {
   margin-top: 200px;
 }
+
+.zindex{
+  z-index: 10000000000;
+}

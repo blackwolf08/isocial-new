@@ -46,7 +46,7 @@ class Feed extends Component {
       <div style={styles.root}>
 
         <TopFeedNavBar />
-        <div style={styles.avatars}>
+        <div className="zindex"  style={styles.avatars}>
             {people}
         </div>
         <div>
@@ -65,7 +65,8 @@ const styles = {
         backgroundColor:'#f2f2f2',
         height: '80px',
         overflowY: 'Hidden',
-        marginTop: '50px'
+        marginTop: '50px',
+        zIndex:'10000000'
     },
     root: {
         width: '100%',

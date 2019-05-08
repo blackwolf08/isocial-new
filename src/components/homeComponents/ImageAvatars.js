@@ -29,15 +29,15 @@ function ImageAvatars(props) {
 
   return (
     <div style={styles.root}>
-      <div zIndex="1000000" style={styles.modal}>
-        <div zIndex="1000000" className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div zIndex="1000000"  className="modal-dialog mydialog" role="document">
-            <div zIndex="1000000" className="modal-content">
-                <div zIndex="1000000" className="mymodal">
+      <div className="zindex" style={styles.modal}>
+        <div className="modal fade zindex" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div  className="modal-dialog mydialog zindex" role="document">
+            <div className="modal-content zindex">
+                <div className="mymodal zindex">
                   
                 </div>
-                <button zIndex="1000000" position="absolute" zIndex="999999" type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <button position="absolute"type="button" className="close zindex" data-dismiss="modal" aria-label="Close">
+                <span className="zindex" aria-hidden="true">&times;</span>
                 </button>
             </div>
         </div>
