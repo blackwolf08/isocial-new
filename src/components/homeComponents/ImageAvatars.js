@@ -10,7 +10,9 @@ const customStyles = {
     bottom                : 'auto',
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
-    width                 : '100%'
+    width                 : '100%',
+    position              : 'relative',
+    height                : '80%'
   }
 };
 
@@ -72,7 +74,10 @@ export default class ImageAvatars extends Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <div className="mymodal"></div>
+          <button style={{position:'absolute', top: 0,right: 0, backgroundColor:'#f2f2f2'}} type="button" class="close" onClick={this.closeModal}>
+            <span >&times; </span>
+          </button>
+          <div className="mymodal animated fadeIn"></div>
         </Modal>
 
         <div style={styles.root}>
