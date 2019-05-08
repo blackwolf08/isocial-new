@@ -109,3 +109,10 @@ button {
 .clickable {
   cursor: pointer;
 }
+
+
+.react-html5-camera-photo, .react-html5-camera-photo video {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}

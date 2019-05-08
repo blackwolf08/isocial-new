@@ -90,7 +90,7 @@ class FeedCard extends Component {
             alt={this.props.name}
             className={classes.media}
             height="140"
-            image="http://lorempixel.com/600/400"
+            image={this.props.image}
             title={this.props.title}
             style={{backgroundPosition:'center center', backgroundSize:'cover', backgroundRepeat:'no-repeat', height:'300px',position:'relative',display:this.state.displayImg}}
           />

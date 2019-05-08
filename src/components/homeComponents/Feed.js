@@ -8,12 +8,22 @@ import ImageAvatars from './ImageAvatars'
 import Spinner from '../../images/index'
 
 class Feed extends Component {
-
+    state ={
+        dataUri: [],
+        count: 0
+    }
 
     componentWillMount(){
         this.props.fetchPhotos();
         this.props.fetchPosts();
         this.props.fetchUsers();
+        console.log(this.props.currentUser)
+    }
+
+    clickedImage = (uri) => {
+        this.setState({
+            dataUri: [...this.state.dataUri, uri]
+        })
     }
 
 
@@ -29,9 +39,10 @@ class Feed extends Component {
     })
 
     let peopleCards = this.props.photos.map((card)=>{
+        console.log(card.url)
         return (
             <div key={card.id}>
-                <FeedCard title={card.title} image={card.url} name={card.title.split(' ')[0]} />
+                <FeedCard title={card.title} image="http://lorempixel.com/600/400" name={card.title.split(' ')[0]} />
             </div>
         )
     })
@@ -45,13 +56,22 @@ class Feed extends Component {
         
       <div style={styles.root}>
 
-        <TopFeedNavBar />
+        <TopFeedNavBar clickedImage={this.clickedImage} />
         <div className="zindex"  style={styles.avatars}>
             {people}
         </div>
         <div>
             {peopleCards}
         </div>
+        {this.state.dataUri.length && (
+            this.state.dataUri.map((n)=>{
+                return (
+                    <div>
+                        <FeedCard title="My new photo" image={n} name={this.props.currentUser.user.username} />
+                    </div>
+                )
+            })
+        )}
         <BottomNav />
       </div>
     )
@@ -79,7 +99,8 @@ const mapStateToProps = state =>({
     posts: state.fetch.posts,
     photos: state.fetch.photos,
     users: state.fetch.users,
-    isLoading: state.fetch.isLoading
+    isLoading: state.fetch.isLoading,
+    currentUser: state.currentUser
 })
 
 export default connect(mapStateToProps, { fetchPhotos, fetchPosts, fetchUsers })(Feed);

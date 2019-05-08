@@ -11,6 +11,7 @@
     "react": "^16.8.6",
     "react-detect-offline": "^2.3.0",
     "react-dom": "^16.8.6",
+    "react-html5-camera-photo": "^1.4.1",
     "react-modal": "^3.8.1",
     "react-redux": "^7.0.3",
     "react-redux-loading-bar": "^4.2.0",
