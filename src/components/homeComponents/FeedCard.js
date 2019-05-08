@@ -95,16 +95,16 @@ class FeedCard extends Component {
             style={{backgroundPosition:'center center', backgroundSize:'cover', backgroundRepeat:'no-repeat', height:'300px',position:'relative',display:this.state.displayImg}}
           />
           {this.state.show &&(
-            <div className="animated heartBeat" style={{color:'#eee',position:'absolute', height:'100%',width:'100%', top:0,left:0, display:'flex', alignItems:'center', justifyContent:'center', fontSize:'200%'}}>
+            <div className="animated pulse" style={{color:'#eee',position:'absolute', height:'100%',width:'100%', top:0,left:0, display:'flex', alignItems:'center', justifyContent:'center', fontSize:'200%'}}>
               <i style={{fontSize: '200%', color: '#eee'}} className="animated heartBeat fas fa-heart"></i>
             </div>
           )}
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" onClick={this.liked}>
+          <Button disableRipple size="small" color="primary" onClick={this.liked}>
               <i style={{fontSize: '200%', color: this.state.color}} className={this.state.likeClass}></i>
           </Button>
-          <Button size="small" color="primary">
+          <Button disableRipple size="small" color="primary">
               <i style={{fontSize: '200%', color: 'black'}} className="far fa-comment"></i>
           </Button>
         </CardActions>
