@@ -64,7 +64,8 @@ const styles = {
         overflowX: 'scroll',
         backgroundColor:'#f2f2f2',
         height: '80px',
-        overflowY: 'Hidden'
+        overflowY: 'Hidden',
+        marginTop: '50px'
     },
     root: {
         width: '100%',
