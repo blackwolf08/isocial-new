@@ -1,6 +1,18 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react'
 import Avatar from '@material-ui/core/Avatar';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)',
+    width                 : '100%'
+  }
+};
 
 const styles = {
   root: {
@@ -17,35 +29,64 @@ const styles = {
   }
 };
 
-function ImageAvatars(props) {
-  const { classes } = props;
-  let { name } = props;
 
-  if(name.length > 6)
-  {
-    name = name.slice(0, 6);
-    name = name + '...'
+
+export default class ImageAvatars extends Component {
+
+  state = {
+    name: this.props.name,
+    modalIsOpen: false
   }
 
-  return (
-    <div>
-      <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="mydialog modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="mymodal"></div>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-        </div>
+  componentWillMount(){
+    if(this.props.name.length > 6)
+    {
+      let name = this.props.name.slice(0, 6);
+      name = name + '...'
+      this.setState({
+        name
+      })
+    }
+  }
+
+
+  openModal = () => {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal = () => {
+  }
+
+  closeModal = () => {
+    this.setState({modalIsOpen: false});
+  }
+
+  render() {
+    
+    return (
+      <div>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <div className="mymodal"></div>
+        </Modal>
+
+        <div style={styles.root}>
+          <button type="button" onClick={this.openModal} style={{outline:'none', backgroundColor:'transparent', border: 'none'}}><Avatar alt={ this.state.name } src="https://picsum.photos/100" className="Avatar" /></button>
+          <p>{ this.state.name }</p>
       </div>
-      <div style={styles.root}>
-        <button type="button" style={{outline:'none', backgroundColor:'transparent', border: 'none'}} data-toggle="modal" data-target="#exampleModal"><Avatar alt={ name } src="https://picsum.photos/100" className={classes.Avatar} /></button>
-        <p>{ name }</p>
       </div>
-    </div>
-  );
+    )
+  }
 }
 
 
-export default withStyles(styles)(ImageAvatars);
+
+
+
+
+
