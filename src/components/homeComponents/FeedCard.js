@@ -45,7 +45,7 @@ class FeedCard extends Component {
           this.setState({
             show: false
           })
-        },1000)
+        },700)
       }
       else{
         this.setState({
@@ -70,7 +70,7 @@ class FeedCard extends Component {
           this.setState({
             show: false
           })
-        },1000)
+        },700)
       }
       else{
         this.setState({
