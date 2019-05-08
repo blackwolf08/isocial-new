@@ -10,6 +10,9 @@
 * {
   -webkit-overflow-scrolling: touch;
 }
+html{
+  overflow: scroll; -webkit-overflow-scrolling: touch;
+}
 
 #root{
   height: 100%;
