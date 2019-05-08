@@ -28,23 +28,30 @@ function ImageAvatars(props) {
   }
 
   return (
-    <div style={styles.root}>
-      <div className="clickable zindex" style={styles.modal}>
-        <div className="modal fade zindex" id="exampleModal" tabIndex="-1" role="dialog" ariaLabelledBy="exampleModalLabel" ariaHidden="true">
-        <div  className="modal-dialog mydialog zindex" role="document">
-            <div className="modal-content zindex">
-                <div className="mymodal zindex">
-                  
-                </div>
-                <button position="absolute"type="button" className="close zindex" dataDismiss="modal" ariaLabel="Close">
-                <span className="zindex" ariaHidden="true">&times;</span>
-                </button>
+    <div>
+      <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-        </div>
+            <div className="modal-body">
+              ...
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-primary">Save changes</button>
+            </div>
+          </div>
         </div>
       </div>
-      <button type="button" style={{outline:'none', backgroundColor:'transparent', border: 'none'}} data-toggle="modal" data-target="#exampleModal"><Avatar alt={ name } src="https://picsum.photos/100" className={classes.Avatar} /></button>
-      <p>{ name }</p>
+      <div style={styles.root}>
+        <button type="button" style={{outline:'none', backgroundColor:'transparent', border: 'none'}} data-toggle="modal" data-target="#exampleModal"><Avatar alt={ name } src="https://picsum.photos/100" className={classes.Avatar} /></button>
+        <p>{ name }</p>
+      </div>
     </div>
   );
 }
